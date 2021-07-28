@@ -8,12 +8,13 @@ class Program:
         self.title = "WhatsApp Bot"
         self.icon = './images/icon3.ico'
         self.color = "#44C694"
- 
+        self.render = None
+
 
     def spam_window(self, ventana):
         image = Image.open('./images/spam_image.png').resize((300, 300))
-        render = ImageTk.PhotoImage(image)
-        label_image = Label(ventana, image= render)
+        self.render = ImageTk.PhotoImage(image)
+        label_image = Label(ventana, image= self.render)
         label_image.config(bg="#44C694")
 
         contact = StringVar()
@@ -91,6 +92,10 @@ class Program:
         )
         button_run.grid(column = 3, row= 7, sticky=E)
 
+    def info_window(self, ventana):
+
+        return None
+
     def start_home(self):
         
         ventana = Tk()
@@ -101,12 +106,17 @@ class Program:
             bg= self.color
         )
         ventana.iconbitmap(self.icon)
+        image = Image.open('./images/bot_image.png').resize((300, 300))
+        self.render = ImageTk.PhotoImage(image)
+        label_image = Label(ventana, image= self.render)
+        label_image.config(bg="#44C694")
+        label_image.place(x=550, y=50)
 
         #Menú superior
         menu_superior = Menu(ventana)
         menu_superior.add_command(label="Inicio")
         menu_superior.add_command(label="Spam bot", command= lambda: self.spam_window(ventana))
-        menu_superior.add_command(label="Información")
+        menu_superior.add_command(label="Información", command= lambda: self.info_window(ventana))
         menu_superior.add_command(label="Salir", command=ventana.quit)
         ventana.config(menu=menu_superior)
 
