@@ -30,7 +30,7 @@ def browser_driver():
 def spam_bot(contact, message, amount):
     driver = browser_driver()
     message_count = 0
-    WebDriverWait(driver, 5)\
+    WebDriverWait(driver, 10)\
     .until(EC.element_to_be_clickable((By.XPATH,
                                       "//*[@id='side']/div[1]/div/label/div/div[2]")))\
     .send_keys(contact + Keys.ENTER)

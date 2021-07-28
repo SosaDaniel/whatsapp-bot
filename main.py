@@ -1,5 +1,8 @@
 from windows import *
+from windows import *
 
 
 #Iniciamos nuestra ventana de inicio
-home()
+
+programa = Program()
+programa.start_home()
