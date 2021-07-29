@@ -5,6 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import os, time 
 
+
+
+
 def browser_driver():
     # Opciones de navegación
     options =  webdriver.ChromeOptions()
@@ -42,5 +45,5 @@ def spam_bot(contact, message, amount):
         .send_keys(message + Keys.ENTER)
         
         time.sleep(1)
-        message_count += 1
-
+        message_count += 1    
+        

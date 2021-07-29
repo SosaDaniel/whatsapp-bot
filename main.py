@@ -1,6 +1,4 @@
 from windows import *
-from windows import *
-
 
 #Iniciamos nuestra ventana de inicio
 

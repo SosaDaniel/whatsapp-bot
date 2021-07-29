@@ -93,7 +93,7 @@ class Program:
         button_run.grid(column = 3, row= 7, sticky=E)
 
     def info_window(self, ventana):
-
+        
         return None
 
     def start_home(self):
