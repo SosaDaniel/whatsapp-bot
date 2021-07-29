@@ -1,6 +1,7 @@
 from spam import spam_bot
 from tkinter import *
 from PIL import Image, ImageTk
+from tkinter import messagebox as MessageBox
 
 class Program:
 
@@ -10,6 +11,18 @@ class Program:
         self.color = "#44C694"
         self.render = None
 
+    def check_entry(self, contact, message, amout):
+        try:
+            amout = int(amout.get())
+            contact = contact.get()
+            amout = amout.get()
+            if(len(contact) != 0 and len(message) != 0 and amout > 0):
+                spam_bot(contact, message, amout)
+            else:
+                MessageBox.showerror("Alerta", "Ingresa los datos de forma correcta")                                                        
+        except:
+            MessageBox.showerror("Alerta", "Completa bien los campos")
+        return None
 
     def spam_window(self, ventana):
         image = Image.open('./images/spam_image.png').resize((300, 300))
@@ -84,8 +97,8 @@ class Program:
             font= ("Century Gothic", 12)
         )
         entry_amount.grid(column=3, row=3, padx=5, pady=5, sticky=W)
-        
-        button_run = Button(home_frame, text= "Enviar", command= lambda:spam_bot(contact.get(), message.get(), int(amount.get())))
+
+        button_run = Button(home_frame, text= "Enviar", command= lambda:self.check_entry(contact, message, amount))
         button_run.config(
             width=18,
             height=1
