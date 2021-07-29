@@ -13,16 +13,12 @@ class Program:
 
     def check_entry(self, contact, message, amout):
         try:
-            amout = int(amout.get())
-            contact = contact.get()
-            amout = amout.get()
             if(len(contact) != 0 and len(message) != 0 and amout > 0):
                 spam_bot(contact, message, amout)
             else:
                 MessageBox.showerror("Alerta", "Ingresa los datos de forma correcta")                                                        
-        except:
-            MessageBox.showerror("Alerta", "Completa bien los campos")
-        return None
+        except Exception as e: 
+            MessageBox.showerror("Alerta", "Completa bien los campos\n" + f"{e}")
 
     def spam_window(self, ventana):
         image = Image.open('./images/spam_image.png').resize((300, 300))
@@ -32,8 +28,7 @@ class Program:
 
         contact = StringVar()
         message = StringVar()
-        amount  = IntVar()
-        amount.set("")
+        amount  = StringVar()
 
         label_image.place(x=550, y=50)
 
@@ -98,7 +93,7 @@ class Program:
         )
         entry_amount.grid(column=3, row=3, padx=5, pady=5, sticky=W)
 
-        button_run = Button(home_frame, text= "Enviar", command= lambda:self.check_entry(contact, message, amount))
+        button_run = Button(home_frame, text= "Enviar", command= lambda:self.check_entry(contact.get(), message.get(), int(amount.get())))
         button_run.config(
             width=18,
             height=1

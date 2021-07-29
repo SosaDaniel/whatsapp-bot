@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import os, time 
+from tkinter import messagebox as MessageBox
 
 
 
@@ -39,11 +40,11 @@ def spam_bot(contact, message, amount):
     .send_keys(contact + Keys.ENTER)
     
     while message_count < amount :
-        WebDriverWait(driver, 5)\
+        WebDriverWait(driver, 10)\
         .until(EC.element_to_be_clickable((By.XPATH,
                                         "//*[@id='main']/footer/div[1]/div[2]/div/div[1]/div/div[2]")))\
         .send_keys(message + Keys.ENTER)
         
         time.sleep(1)
-        message_count += 1    
+        message_count += 1
         
