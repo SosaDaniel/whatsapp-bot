@@ -93,12 +93,23 @@ class Program:
         )
         entry_amount.grid(column=3, row=3, padx=5, pady=5, sticky=W)
 
+        Label(home_frame, text="", background="#44C694").grid(column=0, row=6)
+
+        #Botones de acciones
+
         button_run = Button(home_frame, text= "Enviar", command= lambda:self.check_entry(contact.get(), message.get(), int(amount.get())))
         button_run.config(
-            width=18,
+            width=16,
             height=1
         )
-        button_run.grid(column = 3, row= 7, sticky=E)
+        button_run.grid(column = 3, row= 7, sticky= E)
+        button_clear = Button(home_frame, text="Reset", command= lambda: (contact.set(""), message.set(""), amount.set("") ))
+        button_clear.config(
+            width=16,
+            height=1
+        )
+        button_clear.place(x=202, y=126)
+        
 
     def info_window(self, ventana):
         
