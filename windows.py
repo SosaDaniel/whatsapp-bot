@@ -103,7 +103,7 @@ class Program:
             height=1
         )
         button_run.grid(column = 3, row= 7, sticky= E)
-        button_clear = Button(home_frame, text="Reset", command= lambda: (contact.set(""), message.set(""), amount.set("") ))
+        button_clear = Button(home_frame, text="Reset", cursor= "arrow" ,command= lambda: (contact.set(""), message.set(""), amount.set("") ))
         button_clear.config(
             width=16,
             height=1
@@ -125,7 +125,7 @@ class Program:
             bg= self.color
         )
         ventana.iconbitmap(self.icon)
-        image = Image.open('./images/bot_image.png').resize((300, 300))
+        image = Image.open('./images/bot_image.png').resize((290, 290))
         self.render = ImageTk.PhotoImage(image)
         label_image = Label(ventana, image= self.render)
         label_image.config(bg="#44C694")
