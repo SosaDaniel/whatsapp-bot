@@ -11,3 +11,5 @@
 
 >   PIL
 `pip install selenium`   
+
+ 2. Ejecutar el archivo main.py y ya podrás usar el bot :)
