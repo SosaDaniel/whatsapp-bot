@@ -1,5 +1,5 @@
 from spam import spam_bot
-from tkinter import *
+from tkinter import * 
 from PIL import Image, ImageTk
 from tkinter import messagebox as MessageBox
 
@@ -21,27 +21,52 @@ class Program:
             MessageBox.showerror("Alerta", "Completa bien los campos\n" + f"{e}")
 
     def spam_window(self, ventana):
-        image = Image.open('./images/spam_image.png').resize((300, 300))
-        self.render = ImageTk.PhotoImage(image)
-        label_image = Label(ventana, image= self.render)
-        label_image.config(bg="#44C694")
 
         contact = StringVar()
         message = StringVar()
         amount  = StringVar()
 
+        #Frame principal
+        bot_frame = Frame(ventana, width=900, height=700)
+        bot_frame.config(
+            bg= self.color,
+            borderwidth=10,
+            relief="groove"
+        )
+        bot_frame.place(x=0, y=0)
+        label_title = Label(bot_frame, text="Bot de Spam")
+        label_title.config(
+            bg= self.color,
+            font=("Verdana", 35)
+        )
+        label_title.place(x=50, y=50)
+
+        label_description = Label(bot_frame, text="Este bot permite enviar el mismo mensaje de forma\nrepetitiva al contacto que hayamos idicado.")
+        label_description.config(
+            bg= self.color,
+            justify="left",
+            font=("Verdana", 10)
+        )
+        label_description.place(x=50, y=130)
+
+        image = Image.open('./images/spam_image.png').resize((300, 300))
+        self.render = ImageTk.PhotoImage(image)
+        label_image = Label(bot_frame, image= self.render)
+        label_image.config(bg="#44C694")
+
         label_image.place(x=550, y=50)
 
-        home_frame = Frame(ventana, width=350, height=350)
-        home_frame.config(
+        menu_frame = Frame(bot_frame, width=350, height=350)
+        menu_frame.config(
         bg="#44C694",
-        bd=3
+        bd=3,
+        relief="groove"
         )
-        home_frame.place(x=30, y=380)
+        menu_frame.place(x=30, y=380)
 
         #Entry y labels CONTACTO
 
-        label_contact = Label(home_frame, text="Nombre del contacto")
+        label_contact = Label(menu_frame, text="Nombre del contacto")
         label_contact.config(
             bg="#44C694",
             justify= "left",
@@ -50,7 +75,7 @@ class Program:
             font = ("Century Gothic", 12)
         )
         label_contact.grid(column=1, row=1, sticky=E)
-        entry_contact = Entry(home_frame, textvariable=contact)
+        entry_contact = Entry(menu_frame, textvariable=contact)
         entry_contact.config(
             width=30,
             font= ("Century Gothic", 12)
@@ -59,7 +84,7 @@ class Program:
 
         #Entry y labels MENSAJE
 
-        label_message = Label(home_frame, text="Mensaje")
+        label_message = Label(menu_frame, text="Mensaje")
         label_message.config(
             bg="#44C694",
             justify= "right",
@@ -68,7 +93,7 @@ class Program:
             font = ("Century Gothic", 12)
         )
         label_message.grid(column=1, row=5, sticky=E)
-        entry_message = Entry(home_frame, textvariable=message)
+        entry_message = Entry(menu_frame, textvariable=message)
         entry_message.config(
             width=30,
             font= ("Century Gothic", 12)
@@ -77,7 +102,7 @@ class Program:
 
         #Entry y labels CANTIDAD
 
-        label_amount = Label(home_frame, text="Cantidad de mensajes")
+        label_amount = Label(menu_frame, text="Cantidad de mensajes")
         label_amount.config(
             bg="#44C694",
             justify= "left",
@@ -86,27 +111,29 @@ class Program:
             font = ("Century Gothic", 12)
         )
         label_amount.grid(column= 1, row=3, sticky=E)
-        entry_amount = Entry(home_frame, textvariable=amount)
+        entry_amount = Entry(menu_frame, textvariable=amount)
         entry_amount.config(
             width=30,
             font= ("Century Gothic", 12)
         )
         entry_amount.grid(column=3, row=3, padx=5, pady=5, sticky=W)
 
-        Label(home_frame, text="", background="#44C694").grid(column=0, row=6)
+        Label(menu_frame, text="", background="#44C694").grid(column=0, row=6)
 
         #Botones de acciones
 
-        button_run = Button(home_frame, text= "Enviar", command= lambda:self.check_entry(contact.get(), message.get(), int(amount.get())))
+        button_run = Button(menu_frame, text= "Enviar", command= lambda:self.check_entry(contact.get(), message.get(), int(amount.get())))
         button_run.config(
             width=16,
-            height=1
+            height=1,
+            cursor= "hand1"
         )
         button_run.grid(column = 3, row= 7, sticky= E)
-        button_clear = Button(home_frame, text="Reset", cursor= "arrow" ,command= lambda: (contact.set(""), message.set(""), amount.set("") ))
+        button_clear = Button(menu_frame, text="Reset", cursor= "arrow" ,command= lambda: (contact.set(""), message.set(""), amount.set("") ))
         button_clear.config(
             width=16,
-            height=1
+            height=1,
+            cursor= "hand1"
         )
         button_clear.place(x=202, y=126)
         
