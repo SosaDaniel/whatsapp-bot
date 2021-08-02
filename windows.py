@@ -8,7 +8,7 @@ class Program:
     def __init__(self):
         self.title = "WhatsApp Bot"
         self.icon = './images/icon3.ico'
-        self.color = "#44C694"
+        self.color = "#1a80b5"
         self.render = None
 
     def check_entry(self, contact, message, amout):
@@ -52,13 +52,13 @@ class Program:
         image = Image.open('./images/spam_image.png').resize((300, 300))
         self.render = ImageTk.PhotoImage(image)
         label_image = Label(bot_frame, image= self.render)
-        label_image.config(bg="#44C694")
+        label_image.config(bg= self.color)
 
         label_image.place(x=550, y=50)
 
         menu_frame = Frame(bot_frame, width=350, height=350)
         menu_frame.config(
-        bg="#44C694",
+        bg= self.color,
         bd=3,
         relief="groove"
         )
@@ -68,7 +68,7 @@ class Program:
 
         label_contact = Label(menu_frame, text="Nombre del contacto")
         label_contact.config(
-            bg="#44C694",
+            bg=self.color,
             justify= "left",
             padx=5, 
             pady=5, 
@@ -86,7 +86,7 @@ class Program:
 
         label_message = Label(menu_frame, text="Mensaje")
         label_message.config(
-            bg="#44C694",
+            bg=self.color,
             justify= "right",
             padx=5, 
             pady=5,
@@ -104,7 +104,7 @@ class Program:
 
         label_amount = Label(menu_frame, text="Cantidad de mensajes")
         label_amount.config(
-            bg="#44C694",
+            bg=self.color,
             justify= "left",
             padx=5, 
             pady=5,
@@ -118,7 +118,7 @@ class Program:
         )
         entry_amount.grid(column=3, row=3, padx=5, pady=5, sticky=W)
 
-        Label(menu_frame, text="", background="#44C694").grid(column=0, row=6)
+        Label(menu_frame, text="", background=self.color).grid(column=0, row=6)
 
         #Botones de acciones
 
@@ -152,11 +152,11 @@ class Program:
             bg= self.color
         )
         ventana.iconbitmap(self.icon)
-        image = Image.open('./images/bot_image.png').resize((290, 290))
+        image = Image.open('./images/spam_bot_bg.png')
         self.render = ImageTk.PhotoImage(image)
         label_image = Label(ventana, image= self.render)
-        label_image.config(bg="#44C694")
-        label_image.place(x=550, y=50)
+        label_image.config(bg=self.color)
+        label_image.place(x=0, y=0)
 
         #Menú superior
         menu_superior = Menu(ventana)
