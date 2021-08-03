@@ -30,37 +30,19 @@ class Program:
         bot_frame = Frame(ventana, width=900, height=700)
         bot_frame.config(
             bg= self.color,
-            borderwidth=10,
-            relief="groove"
         )
         bot_frame.place(x=0, y=0)
-        label_title = Label(bot_frame, text="Bot de Spam")
-        label_title.config(
-            bg= self.color,
-            font=("Verdana", 35)
-        )
-        label_title.place(x=50, y=50)
 
-        label_description = Label(bot_frame, text="Este bot permite enviar el mismo mensaje de forma\nrepetitiva al contacto que hayamos idicado.")
-        label_description.config(
-            bg= self.color,
-            justify="left",
-            font=("Verdana", 10)
-        )
-        label_description.place(x=50, y=130)
-
-        image = Image.open('./images/spam_image.png').resize((300, 300))
+        image = Image.open('./images/spam_bot_bg.png')
         self.render = ImageTk.PhotoImage(image)
         label_image = Label(bot_frame, image= self.render)
         label_image.config(bg= self.color)
 
-        label_image.place(x=550, y=50)
+        label_image.place(x=0, y=0)
 
         menu_frame = Frame(bot_frame, width=350, height=350)
         menu_frame.config(
         bg= self.color,
-        bd=3,
-        relief="groove"
         )
         menu_frame.place(x=30, y=380)
 
@@ -69,6 +51,7 @@ class Program:
         label_contact = Label(menu_frame, text="Nombre del contacto")
         label_contact.config(
             bg=self.color,
+            fg="white",
             justify= "left",
             padx=5, 
             pady=5, 
@@ -87,6 +70,7 @@ class Program:
         label_message = Label(menu_frame, text="Mensaje")
         label_message.config(
             bg=self.color,
+            fg="white",
             justify= "right",
             padx=5, 
             pady=5,
@@ -105,6 +89,7 @@ class Program:
         label_amount = Label(menu_frame, text="Cantidad de mensajes")
         label_amount.config(
             bg=self.color,
+            fg="white",
             justify= "left",
             padx=5, 
             pady=5,
@@ -152,7 +137,7 @@ class Program:
             bg= self.color
         )
         ventana.iconbitmap(self.icon)
-        image = Image.open('./images/spam_bot_bg.png')
+        image = Image.open('./images/home_bg.png')
         self.render = ImageTk.PhotoImage(image)
         label_image = Label(ventana, image= self.render)
         label_image.config(bg=self.color)
