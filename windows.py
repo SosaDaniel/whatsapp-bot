@@ -1,5 +1,5 @@
 from spam import spam_bot
-from tkinter import * 
+from tkinter import *  
 from PIL import Image, ImageTk
 from tkinter import messagebox as MessageBox
 
@@ -40,6 +40,7 @@ class Program:
 
         label_image.place(x=0, y=0)
 
+        #Frame del menú
         menu_frame = Frame(bot_frame, width=350, height=350)
         menu_frame.config(
         bg= self.color,
@@ -47,7 +48,6 @@ class Program:
         menu_frame.place(x=30, y=380)
 
         #Entry y labels CONTACTO
-
         label_contact = Label(menu_frame, text="Nombre del contacto")
         label_contact.config(
             bg=self.color,
@@ -66,7 +66,6 @@ class Program:
         entry_contact.grid(column=3, row=1,padx=5, pady=5, sticky=W)
 
         #Entry y labels MENSAJE
-
         label_message = Label(menu_frame, text="Mensaje")
         label_message.config(
             bg=self.color,
@@ -85,7 +84,6 @@ class Program:
         entry_message.grid(column=3, row=5, padx=5, pady=5, sticky=W)
 
         #Entry y labels CANTIDAD
-
         label_amount = Label(menu_frame, text="Cantidad de mensajes")
         label_amount.config(
             bg=self.color,
@@ -106,7 +104,6 @@ class Program:
         Label(menu_frame, text="", background=self.color).grid(column=0, row=6)
 
         #Botones de acciones
-
         button_run = Button(menu_frame, text= "Enviar", command= lambda:self.check_entry(contact.get(), message.get(), int(amount.get())))
         button_run.config(
             width=16,
@@ -137,16 +134,41 @@ class Program:
             bg= self.color
         )
         ventana.iconbitmap(self.icon)
+        #Frame principal
+        home_frame = Frame(ventana, width=900, height=700)
+        home_frame.config(
+            bg= self.color,
+        )
+        home_frame.place(x=0, y=0)
         image = Image.open('./images/home_bg.png')
         self.render = ImageTk.PhotoImage(image)
-        label_image = Label(ventana, image= self.render)
+        label_image = Label(home_frame, image= self.render)
         label_image.config(bg=self.color)
-        label_image.place(x=0, y=0)
+        label_image.place(x=-2, y=-3)
+        
+        #Botones del menú principal
+        button_spam = Button(label_image, text= "Bot de Spam", command= lambda: self.spam_window(ventana))
+        button_spam.config(
+            width=28,
+            height=3,
+            font= ("Arial", 12),
+            cursor= "hand1"
+        )
+        button_spam.place(x=40,y=350)
+
+        button_clear = Button(label_image, text="Respuesta automática", cursor= "arrow" )
+        button_clear.config(
+            width=28,
+            height=3,
+            font= ("Arial", 12),
+            cursor= "hand1"
+        )
+        button_clear.place(x=380, y=350)
+
+        
 
         #Menú superior
         menu_superior = Menu(ventana)
-        menu_superior.add_command(label="Inicio")
-        menu_superior.add_command(label="Spam bot", command= lambda: self.spam_window(ventana))
         menu_superior.add_command(label="Información", command= lambda: self.info_window(ventana))
         menu_superior.add_command(label="Salir", command=ventana.quit)
         ventana.config(menu=menu_superior)
