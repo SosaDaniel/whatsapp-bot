@@ -118,6 +118,14 @@ class Program:
             cursor= "hand1"
         )
         button_clear.place(x=202, y=126)
+
+        button_back = Button(bot_frame, text="Volver", cursor= "arrow" ,command= lambda: self.start_home() )
+        button_back.config(
+            width=16,
+            height=1,
+            cursor= "hand1"
+        )
+        button_back.place(x=30, y=30)
         
 
     def info_window(self, ventana):
