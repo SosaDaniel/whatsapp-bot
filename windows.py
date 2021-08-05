@@ -18,7 +18,7 @@ class Program:
             else:
                 MessageBox.showerror("Alerta", "Ingresa los datos de forma correcta")                                                        
         except Exception as e: 
-            MessageBox.showerror("Alerta", "Completa bien los campos\n" + f"{e}")
+            MessageBox.showerror("Alerta", "Hubo un error\n" + f"{e}")
 
     def spam_window(self, ventana):
 
@@ -134,16 +134,16 @@ class Program:
 
     def start_home(self):
         
-        ventana = Tk()
-        ventana.geometry("900x700")
-        ventana.title(self.title)
-        ventana.resizable(0,0)
-        ventana.config(
+        root = Tk()
+        root.geometry("900x700")
+        root.title(self.title)
+        root.resizable(0,0)
+        root.config(
             bg= self.color
         )
-        ventana.iconbitmap(self.icon)
+        root.iconbitmap(self.icon)
         #Frame principal
-        home_frame = Frame(ventana, width=900, height=700)
+        home_frame = Frame(root, width=900, height=700)
         home_frame.config(
             bg= self.color,
         )
@@ -155,7 +155,7 @@ class Program:
         label_image.place(x=-2, y=-3)
         
         #Botones del menú principal
-        button_spam = Button(label_image, text= "Bot de Spam", command= lambda: self.spam_window(ventana))
+        button_spam = Button(label_image, text= "Bot de Spam", command= lambda: self.spam_window(root))
         button_spam.config(
             width=28,
             height=3,
@@ -176,10 +176,10 @@ class Program:
         
 
         #Menú superior
-        menu_superior = Menu(ventana)
-        menu_superior.add_command(label="Información", command= lambda: self.info_window(ventana))
-        menu_superior.add_command(label="Salir", command=ventana.quit)
-        ventana.config(menu=menu_superior)
+        menu_superior = Menu(root)
+        menu_superior.add_command(label="Información", command= lambda: self.info_window(root))
+        menu_superior.add_command(label="Salir", command=root.quit)
+        root.config(menu=menu_superior)
 
 
-        ventana.mainloop()
+        root.mainloop()
