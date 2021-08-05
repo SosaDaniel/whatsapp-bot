@@ -1,4 +1,4 @@
-## BOT DE SPAM CON PYTHON 🐍🤖
+## BOT DE SPAM CON PYTHON 🐍🤖 (app en proceso)
 
 - **WhatsappBot**
 
